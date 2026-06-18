@@ -14,10 +14,13 @@
             
             <div class="form-grid">
                 <div class="section-label">1. Document Heading</div>
-                <select id="in-doc-type" onchange="updatePreview()">
+                <select id="in-doc-type" onchange="handleDocTypeChange()">
                     <option value="Assignment">Assignment</option>
                     <option value="Lab Report">Lab Report</option>
+                    <option value="Project">Project</option>
+                    <option value="Custom">Custom Heading</option>
                 </select>
+                <input type="text" id="in-custom-heading" placeholder="Enter custom heading (e.g., Thesis, Case Study)" oninput="updatePreview()" style="display: none; margin-top: 6px;">
 
                 <div class="section-label">2. Select Professor</div>
                 <select id="in-prof-name" onchange="autoFillAll()">
@@ -37,15 +40,36 @@
                 </div>
                 <input type="text" id="in-assign-title" placeholder="e.g. Impact of AI on Business" oninput="updatePreview()" style="display: none;">
 
-                <div class="section-label">4. Auto-filled Details</div>
+                <div class="section-label">4. Group Configurations</div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="check-group-name" onchange="toggleGroupNameInput()">
+                    <label for="check-group-name">Add Group Name?</label>
+                </div>
+                <input type="text" id="in-group-name" placeholder="e.g. Team Alpha" oninput="updatePreview()" style="display: none; margin-bottom: 10px;">
+
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="check-group" onchange="toggleGroupInput()">
+                    <label for="check-group">Is this a Group Assignment/Project?</label>
+                </div>
+                
+                <div id="group-input-container" style="display: none;">
+                    <div id="member-fields-wrapper"></div>
+                    <button type="button" class="add-member-btn" onclick="addGroupMemberField()">+ Add Another Member</button>
+                </div>
+
+                <div class="section-label">5. Auto-filled Details</div>
                 <input type="text" id="in-course" placeholder="Course Title" readonly>
                 <input type="text" id="in-code" placeholder="Course Code" readonly>
                 <input type="text" id="in-prof-desig" placeholder="Designation" readonly>
                 <input type="text" id="in-prof-dept" placeholder="Department" readonly>
 
-                <div class="section-label">5. Student Details</div>
-                <input type="text" id="in-student-name" placeholder="Your Name" oninput="updatePreview()">
-                <input type="text" id="in-student-id" placeholder="Student ID: 242-115-079" oninput="updatePreview()">
+                <div id="single-student-input">
+                    <div class="section-label">6. Student Details</div>
+                    <input type="text" id="in-student-name" placeholder="Your Name" oninput="updatePreview()">
+                    <input type="text" id="in-student-id" placeholder="Student ID: 242-115-079" oninput="updatePreview()">
+                </div>
+
+                <div class="section-label">7. Submission Date</div>
                 <input type="date" id="in-date" oninput="updatePreview()">
             </div>
             
@@ -79,16 +103,38 @@
 
             <div class="info-block">
                 <h3 class="sub-label">Submitted by:</h3>
-                <p class="bold-text">Name: <span id="out-student-name">...</span></p>
-                <p class="bold-text">ID: <span id="out-student-id">...</span></p>
-                <p>Section: B</p>
-                <p>Batch: 61<sup>st</sup></p>
-                <p>Department of Computer Science and Engineering</p>
-                <p>Metropolitan University</p>
+                
+                <p id="out-group-name-wrapper" class="bold-text" style="display: none; margin-bottom: 8px;">
+                    Group: <span id="out-group-name">...</span>
+                </p>
+
+                <div id="out-single-student">
+                    <p class="bold-text">Name: <span id="out-student-name">...</span></p>
+                    <p class="bold-text">ID: <span id="out-student-id">...</span></p>
+                </div>
+
+                <div id="out-group-students" style="display: none; margin: 10px auto; width: 85%;">
+                    <table class="member-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="out-member-rows"></tbody>
+                    </table>
+                </div>
+
+                <div class="static-student-info">
+                    <p>Section: B</p>
+                    <p>Batch: 61<sup>st</sup></p>
+                    <p>Department of Computer Science and Engineering</p>
+                    <p>Metropolitan University</p>
+                </div>
             </div>
 
             <div class="date-section">
-                <p><strong>Date of Submission:</strong> <span id="out-date"></span></p>
+                <p><strong>Date of Submission:</strong> <span id="out-date">__________________</span></p>
             </div>
         </div>
     </div>
