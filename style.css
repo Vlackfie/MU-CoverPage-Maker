@@ -26,18 +26,18 @@ input[readonly] { background: #f1f3f9; color: #444; border: 1px solid #d1d9e6; c
 }
 .logo-wrapper img { width: 100%; max-width: 480px; height: auto; margin-bottom: 5px; }
 
-.title-group { text-align: center; margin: 15px 0; min-height: 60px; }
-.main-title { font-size: 24pt; margin: 0; text-decoration: underline; font-weight: bold; }
+.title-group { text-align: center; margin: 17px 0; min-height: 60px; }
+.main-title { font-size: 25pt; margin: 0; text-decoration: underline; font-weight: bold; }
 .sub-assignment-title { font-size: 18pt; margin-top: 8px; font-style: normal; color: #333; }
 
 .content-body { width: 100%; text-align: center; }
-.course-section p { font-size: 15pt; margin: 1px 0; }
-.info-block { margin-top: 15px; }
-.sub-label { font-size: 16pt; text-decoration: underline; margin-bottom: 4px; }
+.course-section p { font-size: 17pt; margin: 1px 0; }
+.info-block { margin-top: 17px; }
+.sub-label { font-size: 18pt; text-decoration: underline; margin-bottom: 4px; }
 .info-block p { margin: 1px 0; font-size: 14pt; line-height: 1.2; }
-.bold-text { font-weight: bold; font-size: 15pt; }
+.bold-text { font-weight: bold; font-size: 17pt; }
 .static-student-info { margin-top: 5px; }
-.date-section { margin-top: 25px; font-size: 15pt; font-weight: bold; }
+.date-section { margin-top: 26px; font-size: 18pt; font-weight: bold; }
 
 .member-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-family: "Times New Roman", serif; }
 .member-table th, .member-table td { border: 1px solid #333; padding: 6px; font-size: 13pt; text-align: left; }
